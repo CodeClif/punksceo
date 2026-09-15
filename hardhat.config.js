@@ -1,10 +1,8 @@
-require("hardhat-gas-reporter");
-require("@nomicfoundation/hardhat-chai-matchers");
-require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-waffle");
 
 module.exports = {
   solidity: {
-    version: "0.8.17",
+    version: "0.8.11",
     settings: {
       optimizer: {
         enabled: true,
