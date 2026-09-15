@@ -1,0 +1,35 @@
+name: Contract tests
+
+on:
+  push:
+    branches:
+      - main
+      - 'contrib/**'
+      - 'audit/**'
+  pull_request:
+
+jobs:
+  hardhat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Prepare Hardhat config
+        run: cp hardhat.config.js.dist hardhat.config.js
+
+      - name: Run tests
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+        run: npx hardhat test
