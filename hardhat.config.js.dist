@@ -4,7 +4,7 @@
 require("hardhat-gas-reporter");
 require("@nomicfoundation/hardhat-chai-matchers");
 
-// This is a sample Hardhat task. To learn how to create your own go to
+// This is a sample Hardhat task. To learn how to create one go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async () => {
     const accounts = await ethers.getSigners();
@@ -17,38 +17,33 @@ task("accounts", "Prints the list of accounts", async () => {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
-
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
     solidity: {
-        version: "0.8.17",
+        version: "0.8.19",
         settings: {
             optimizer: {
                 enabled: true,
                 runs: 1000
             },
         },
-
-
     },
     mocha: {
         timeout: 30000
     },
     defaultNetwork: "hardhat",
     networks: {
-
         // when running the migration-test.js
         // uncomment the following and get an API key from https://www.alchemy.com/
         /*
-
         hardhat: {
-                    forking: {
-                        url: "https://eth-mainnet.alchemyapi.io/v2/API-KEY",
-                        blockNumber: 13974859
-                    }
-                },
+            forking: {
+                url: "https://eth-mainnet.alchemyapi.io/v2/API-KEY",
+                blockNumber: 13974859
+            }
+        },
         */
         forkedLocal: {
             url: "http://127.0.0.1:8546",
@@ -61,8 +56,6 @@ module.exports = {
         ganache: {
             url: "http://127.0.0.1:7545",
             chainId: 1,
-
         }
     }
 };
-
